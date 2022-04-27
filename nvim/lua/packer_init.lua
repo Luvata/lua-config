@@ -27,7 +27,16 @@ return packer.startup(function(use)
   use 'wbthomason/packer.nvim' -- packer can manage itself
 
   -- Color schemes
-  use 'morhetz/gruvbox'
+  use {
+    'morhetz/gruvbox',
+    config = function()
+        vim.cmd [[colorscheme gruvbox]]
+        vim.g.background = 'dark'
+    end
+  }
+
+  -- Transparent background
+  use 'xiyaowong/nvim-transparent'
 
   -- NvimTree
   use {
@@ -53,11 +62,9 @@ return packer.startup(function(use)
   use {
     'hrsh7th/nvim-cmp',
     requires = {
-      'L3MON4D3/LuaSnip',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-buffer',
-      'saadparwaiz1/cmp_luasnip',
       'hrsh7th/vim-vsnip',
       'hrsh7th/cmp-vsnip'
     },

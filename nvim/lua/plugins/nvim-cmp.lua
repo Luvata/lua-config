@@ -18,7 +18,6 @@ cmp.setup {
   -- Load snippet support
   snippet = {
     expand = function(args)
-      -- luasnip.lsp_expand(args.body)
       vim.fn["vsnip#anonymous"](args.body)
     end,
   },
@@ -60,7 +59,7 @@ cmp.setup {
   -- Load sources, see: https://github.com/topics/nvim-cmp
   sources = {
     { name = 'nvim_lsp' },
-    { name = 'luasnip' },
+    { name = 'vsnip' },
     { name = 'path' },
     { 
       name = 'buffer',
