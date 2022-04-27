@@ -72,7 +72,7 @@ local on_attach = function(client, bufnr)
 --  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
---  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
@@ -92,9 +92,7 @@ end
 -- map buffer local keybindings when the language server attaches.
 -- Add your language server below:
 
-local servers = { 'bashls', 'jedi_language_server'}
--- local servers = { 'bashls', 'pylsp'}
--- local servers = { 'bashls', 'pyright'}
+local servers = { 'bashls', 'jedi_language_server' }
 
 -- Call setup
 for _, lsp in ipairs(servers) do
@@ -109,3 +107,10 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
+-- https://github.com/hrsh7th/nvim-cmp/issues/131
+lspconfig['pyright'].setup {
+  on_attach = function(client)
+   client.server_capabilities.completionProvider = false
+  end
+}
