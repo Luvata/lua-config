@@ -19,5 +19,5 @@ My new config for neovim using Lua
 - [x] minimal keymaps
 - [x] gruvbox coloscheme setting from lua, not by calling vim command
 - [x] pyright diagnostics 
-- [ ] Telescope
+- [x] Telescope
 

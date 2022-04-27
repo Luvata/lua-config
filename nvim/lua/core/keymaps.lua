@@ -23,3 +23,6 @@ map('t', '<Esc>', '<C-\\><C-n>')                    -- exit
 -- NvimTree
 map('n', '<leader>nt', ':NvimTreeToggle<CR>')            -- open/close
 
+-- Telescope
+map("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>")
+map("n", "<c-t>", "<cmd>Telescope live_grep<cr>")
